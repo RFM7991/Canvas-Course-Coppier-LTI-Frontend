@@ -6,7 +6,6 @@
     "bootstrap": "^4.3.1",
     "intuit-oauth": "^1.2.0",
     "jquery": "^3.4.1",
-    "js-cookie": "^2.2.1",
     "mongoose": "^5.5.11",
     "openssl": "^1.1.0",
     "popper.js": "^1.15.0",
