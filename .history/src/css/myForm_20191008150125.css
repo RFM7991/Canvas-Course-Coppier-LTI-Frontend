@@ -1,0 +1,8 @@
+tbody tr :nth-child(odd) {
+    background-color:  'white';
+    color: 'black';
+}
+
+test {
+    font-size: 40
+}
