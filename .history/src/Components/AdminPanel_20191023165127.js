@@ -21,9 +21,7 @@ class AdminPanel extends React.Component {
   }
 
   handleRunLogs = async () => {
-    let response = await runLogs(this.props.token, this.state.userInfo.courseId, false)
-    if (response != undefined)
-      alert(JSON.stringify(response))
+    await runLogs(this.props.token, this.state.userInfo.courseId, false)
   }
 
   render() {

@@ -1,15 +1,22 @@
 import React from 'react';
-import logo from './images/Canvas-Logo.png';
-import '..//AdminPanel.css';
-import LinkCard from './LinkCard.js'
-import search from './images/search_icon.png'
-import publish from './images/publisher_icon.png'
+import logo from '../images/Canvas-Logo.png';
 import MyForm from './MyForm'
+import { getUserInfo, getCourseInfo } from '../Requests/CandroidRequests'
+import Button from 'react-bootstrap/Button';
+import { tsConstructorType } from '@babel/types';
 
 class AdminPanel extends React.Component {
   constructor(props) {
     super(props)
     this.state = {board: "splash"}
+  }
+
+  async componentDidMount() {
+    let userInfo = await getUserInfo(this.props.token)
+    let courseInfo = await getCourseInfo(this.props.token, userInfo.courseId)
+    this.setState({ userInfo : userInfo})
+    console.log('FETCHED INFO', userInfo, courseInfo)
+ 
   }
   render() {
 
@@ -30,11 +37,19 @@ class AdminPanel extends React.Component {
       <div className="App-container">
         {top_window}
         <br></br>
+        <Button  variant="secondary"
+                  onClick={this.handleSubmit}>
+                    Run Report
+        </Button>
+        <br></br>
+        <br></br>
+        <br></br>
         <h1 style={{ color: 'white'}}>
           Settings
-          <br></br><br></br>
-          <MyForm userInfo={this.props.userInfo}></MyForm>
-        </h1>
+          </h1>
+        
+          <MyForm userInfo={this.state.userInfo} token={this.props.token}></MyForm>
+        
         <div className="AdminPanelContainer">
         <header className="Canvas Admin Panel">
         </header>

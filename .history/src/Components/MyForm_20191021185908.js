@@ -11,8 +11,8 @@ class MyForm extends React.Component {
       this.state = {
         course: 'Candroid Test Course 1',
         checked: this.props.courseInfo.candroid_enabled, // get from prop from db
-        teacher_threshold: this.props.courseInfo.teacher_threshold,
-        student_threshold: this.props.courseInfo.student_threshold,
+        teacherThreshold: this.props.courseInfo.teacher_threshold,
+        studentThreshold: this.props.courseInfo.student_threshold,
         actionTaken : false,
       };
       this.handleChange = this.handleChange.bind(this)
@@ -27,26 +27,26 @@ class MyForm extends React.Component {
     }
 
     handleSelect = (event) => {
-      console.log(event.target.name, event.target.value)
+      console.log(event.target)
       let field = event.target.name
       let value = event.target.value
       this.setState({
         [field] : value,
         actionTaken : true
-      }, () => console.log(this.state))
+      })
     }
 
    async handleSubmit() {
       if (this.state.actionTaken) {
         // post update to candroid
-        let response  = await updateCourse(this.props.token, this.props.userInfo.courseId, this.state.checked, Number(this.state.teacher_threshold), Number(this.state.student_threshold))
-        if (response != undefined)
-          alert(JSON.stringify(response))
+        let response  = await updateCourse(this.props.token, this.props.userInfo.courseId, this.state.checked, this.state.teacherThreshold, this.state.studentThreshold)
+        alert(JSON.stringify(response))
         this.setState({ actionTaken: false })
       } 
     }
 
     render() {
+        console.log(this.state, this.props)
       return (
         <div style={{ fontFamily: 'arial, sans-serif', width: '40%', margin: 'auto', border: '1px solid white', borderRadius: '5px', padding: '8px'}}>
           <table style= {{color: 'white', width: '100%'}}>
@@ -71,7 +71,7 @@ class MyForm extends React.Component {
               </div>
               </td>
               <td> 
-                    <Form.Control as="select" name="teacher_threshold" onChange = {this.handleSelect} defaultValue={this.state.teacher_threshold}>
+                    <Form.Control as="select" name="teacher_threshold" onChange = {this.handleSelect} defaultValue={this.state.teacherThreshold}>
                         <option key={1}>1</option>
                         <option key={2}>2</option>
                         <option key={3}>3</option>
@@ -114,7 +114,7 @@ class MyForm extends React.Component {
               </div>
               </td>
               <td> 
-                    <Form.Control as="select" name="student_threshold" onChange={this.handleSelect} defaultValue={this.state.student_threshold} >
+                    <Form.Control as="select" name="student_threshold" onChange={this.handleSelect} defaultValue={this.state.studentThreshold} >
                         <option key={1}>1</option>
                         <option key={2}>2</option>
                         <option key={3}>3</option>

@@ -5,7 +5,6 @@ import Cookies from 'js-cookie';
 import { LOGIN } from '../Constants'
 import { Redirect } from 'react-router'
 import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
-import { launchLTI } from '../Requests/CandroidRequests' 
 
 class App extends React.Component {
 
@@ -15,13 +14,11 @@ class App extends React.Component {
       token: Cookies.get('token')
     }
     console.log('Cookie', this.state.token)
-  }
 
-  async componentDidMount() {
-      // if no cookie present, redirect to server login
-      if (this.state.token == undefined) {
+    // if no cookie present, redirect to server login
+    if (this.state.token == undefined) {
       console.log('NO COOKIE')
-      window.location.assign(LOGIN)
+      window.location.assign('https://montclair.test.instructure.com/courses/114737/external_tools/6816')
     } 
   }
 

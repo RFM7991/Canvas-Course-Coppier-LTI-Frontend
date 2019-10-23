@@ -21,7 +21,8 @@ class App extends React.Component {
       // if no cookie present, redirect to server login
       if (this.state.token == undefined) {
       console.log('NO COOKIE')
-      window.location.assign(LOGIN)
+      let res = await launchLTI(114737)
+      console.log('LTI LAUNCH', res)
     } 
   }
 

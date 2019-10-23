@@ -1,23 +1,6 @@
 import { API } from "../Constants";
 import Cookies from 'js-cookie';
-import {LOGIN} from '../Constants'
-
-export const launchLTI = (courseId) => {
-    var formBody = {
-        'courseId': courseId
-    };
-    
-    return fetch(LOGIN,
-    {
-        method : 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-        },
-        body : JSON.stringify(formBody)
-    })
-    .then(res => res.json())
-    .catch(err => console.error('Course Update Error:', err))
-}
+import { LOGIN } from '../Constants'
 
 export const updateCourse = (token, courseId, isEnabled, teacherThreshold, studentThreshold) => {
     var formBody = {
@@ -40,7 +23,7 @@ export const updateCourse = (token, courseId, isEnabled, teacherThreshold, stude
         if (res.status == 401) {
             alert('Session Expired, please Refresh the page')
             Cookies.remove('token')
-            window.location.assign('https://montclair.test.instructure.com/courses/'+ courseId +'/external_tools/6816')
+            window.location.assign(LOGIN)
         } else {
         return res.json()
         }
@@ -61,7 +44,7 @@ export const getUserInfo = (token) => {
         if (res.status == 401) {
             alert('Session Expired, please Refresh the page')
             Cookies.remove('token')
-            window.location.reload()
+            window.location.assign(LOGIN)
         } else {
         return res.json()
         }
@@ -81,7 +64,7 @@ export const getCourseInfo = (token, courseId) => {
         if (res.status == 401) {
             alert('Session Expired, please Refresh the page')
             Cookies.remove('token')
-            window.location.reload()
+            window.location.assign(LOGIN)
         } else {
         return res.json()
         }
@@ -108,7 +91,7 @@ export const runLogs = (token, courseId, sendToStudents) => {
         if (res.status == 401) {
             alert('Session Expired, please Refresh the page')
             Cookies.remove('token')
-            window.location.assign('https://montclair.test.instructure.com/courses/'+ courseId +'/external_tools/6816')
+            window.location.assign(LOGIN)
         } else {
         return res.json()
         }

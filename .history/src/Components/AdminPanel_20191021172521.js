@@ -1,8 +1,9 @@
 import React from 'react';
 import logo from '../images/Canvas-Logo.png';
 import MyForm from './MyForm'
-import { getUserInfo, getCourseInfo, runLogs } from '../Requests/CandroidRequests'
+import { getUserInfo, getCourseInfo } from '../Requests/CandroidRequests'
 import Button from 'react-bootstrap/Button';
+import { tsConstructorType } from '@babel/types';
 
 class AdminPanel extends React.Component {
   constructor(props) {
@@ -11,44 +12,33 @@ class AdminPanel extends React.Component {
   }
 
   async componentDidMount() {
-    let userInfo, courseInfo;
-    if (this.props.token != undefined) {
-      userInfo = await getUserInfo(this.props.token)
-      courseInfo = await getCourseInfo(this.props.token, userInfo.courseId)
-    }
-    this.setState({ userInfo : userInfo, courseInfo : courseInfo})
-    console.log('FETCHED INFO', userInfo, courseInfo)
+    let userInfo = await getUserInfo(this.props.token)
+    console.log(userInfo.courseId)
+    let courseInfo = await getCourseInfo(this.props.token, userInfo.courseId)
+    this.setState({ userInfo : userInfo})
+    console.log('FETCHED INFO', userInfo)
   }
-
-  handleRunLogs = async () => {
-    let response = await runLogs(this.props.token, this.state.userInfo.courseId, false)
-    if (response != undefined)
-      alert(JSON.stringify(response))
-  }
-
   render() {
+
       var top_window = (
         <header className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
           <p>
-             Candroid
+             Candroid <code>Admin Panel</code>
              <br></br>
-             Student Activity Logger
+             Montclair State University
              <br></br>
-             <code>Admin Panel</code>
+             2019
           </p>
         </header>
       );
-      if (this.state.userInfo !== undefined && this.state.courseInfo !== undefined)
-        var menu = <MyForm userInfo={this.state.userInfo} courseInfo={this.state.courseInfo} token={this.props.token}></MyForm>
-      else var menu = <></>
     
     return (
       <div className="App-container">
         {top_window}
         <br></br>
         <Button  variant="secondary"
-                  onClick={this.handleRunLogs}>
+                  onClick={this.handleSubmit}>
                     Run Report
         </Button>
         <br></br>
@@ -58,7 +48,7 @@ class AdminPanel extends React.Component {
           Settings
           </h1>
         
-          {menu}
+          <MyForm userInfo={this.state.userInfo} token={this.props.token}></MyForm>
         
         <div className="AdminPanelContainer">
         <header className="Canvas Admin Panel">

@@ -15,13 +15,11 @@ class App extends React.Component {
       token: Cookies.get('token')
     }
     console.log('Cookie', this.state.token)
-  }
 
-  async componentDidMount() {
-      // if no cookie present, redirect to server login
-      if (this.state.token == undefined) {
+    // if no cookie present, redirect to server login
+    if (this.state.token == undefined) {
       console.log('NO COOKIE')
-      window.location.assign(LOGIN)
+      launchLTI(114737)
     } 
   }
 

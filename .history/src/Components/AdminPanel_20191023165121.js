@@ -16,14 +16,14 @@ class AdminPanel extends React.Component {
       userInfo = await getUserInfo(this.props.token)
       courseInfo = await getCourseInfo(this.props.token, userInfo.courseId)
     }
+    
+    // refresh if 
     this.setState({ userInfo : userInfo, courseInfo : courseInfo})
     console.log('FETCHED INFO', userInfo, courseInfo)
   }
 
   handleRunLogs = async () => {
-    let response = await runLogs(this.props.token, this.state.userInfo.courseId, false)
-    if (response != undefined)
-      alert(JSON.stringify(response))
+    await runLogs(this.props.token, this.state.userInfo.courseId, false)
   }
 
   render() {

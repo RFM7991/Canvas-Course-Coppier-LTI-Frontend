@@ -3,6 +3,7 @@ import logo from '../images/Canvas-Logo.png';
 import MyForm from './MyForm'
 import { getUserInfo, getCourseInfo, runLogs } from '../Requests/CandroidRequests'
 import Button from 'react-bootstrap/Button';
+import { tsConstructorType } from '@babel/types';
 
 class AdminPanel extends React.Component {
   constructor(props) {
@@ -11,22 +12,18 @@ class AdminPanel extends React.Component {
   }
 
   async componentDidMount() {
-    let userInfo, courseInfo;
-    if (this.props.token != undefined) {
-      userInfo = await getUserInfo(this.props.token)
-      courseInfo = await getCourseInfo(this.props.token, userInfo.courseId)
-    }
+    let userInfo = await getUserInfo(this.props.token)
+    let courseInfo = await getCourseInfo(this.props.token, userInfo.courseId)
     this.setState({ userInfo : userInfo, courseInfo : courseInfo})
     console.log('FETCHED INFO', userInfo, courseInfo)
   }
 
   handleRunLogs = async () => {
-    let response = await runLogs(this.props.token, this.state.userInfo.courseId, false)
-    if (response != undefined)
-      alert(JSON.stringify(response))
+    await runLogs(this.props.token, this.props.userInfo.courseId, false)
   }
 
   render() {
+
       var top_window = (
         <header className="App-header">
           <img src={logo} className="App-logo" alt="logo" />

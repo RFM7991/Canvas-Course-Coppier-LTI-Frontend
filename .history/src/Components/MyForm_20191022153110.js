@@ -3,7 +3,7 @@ import Switch from "react-switch";
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form'
 import '../css/myForm.css'
-import { updateCourse } from  '../Requests/CandroidRequests'
+import { updateCourse, runLogs } from  '../Requests/CandroidRequests'
 
 class MyForm extends React.Component {
     constructor(props) {
@@ -36,17 +36,21 @@ class MyForm extends React.Component {
       }, () => console.log(this.state))
     }
 
+    handleRunLogs = async (event) => {
+      await runLogs(this.props.token, this.props.userInfo.courseId, false)
+    }
+
    async handleSubmit() {
       if (this.state.actionTaken) {
         // post update to candroid
         let response  = await updateCourse(this.props.token, this.props.userInfo.courseId, this.state.checked, Number(this.state.teacher_threshold), Number(this.state.student_threshold))
-        if (response != undefined)
-          alert(JSON.stringify(response))
+        alert(JSON.stringify(response))
         this.setState({ actionTaken: false })
       } 
     }
 
     render() {
+        console.log(this.state, this.props)
       return (
         <div style={{ fontFamily: 'arial, sans-serif', width: '40%', margin: 'auto', border: '1px solid white', borderRadius: '5px', padding: '8px'}}>
           <table style= {{color: 'white', width: '100%'}}>

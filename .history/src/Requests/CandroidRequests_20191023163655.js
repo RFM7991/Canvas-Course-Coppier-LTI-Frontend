@@ -1,23 +1,5 @@
 import { API } from "../Constants";
 import Cookies from 'js-cookie';
-import {LOGIN} from '../Constants'
-
-export const launchLTI = (courseId) => {
-    var formBody = {
-        'courseId': courseId
-    };
-    
-    return fetch(LOGIN,
-    {
-        method : 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-        },
-        body : JSON.stringify(formBody)
-    })
-    .then(res => res.json())
-    .catch(err => console.error('Course Update Error:', err))
-}
 
 export const updateCourse = (token, courseId, isEnabled, teacherThreshold, studentThreshold) => {
     var formBody = {
@@ -37,10 +19,10 @@ export const updateCourse = (token, courseId, isEnabled, teacherThreshold, stude
         body : JSON.stringify(formBody)
     })
     .then(res => {
-        if (res.status == 401) {
+        if (res.status >= 400 && res.status < 500) {
             alert('Session Expired, please Refresh the page')
-            Cookies.remove('token')
-            window.location.assign('https://montclair.test.instructure.com/courses/'+ courseId +'/external_tools/6816')
+            Cookies.delete('token')
+            window.location.reload()
         } else {
         return res.json()
         }
@@ -58,9 +40,9 @@ export const getUserInfo = (token) => {
         }
     })
     .then(res => {
-        if (res.status == 401) {
+        if (res.status >= 400 && res.status < 500) {
             alert('Session Expired, please Refresh the page')
-            Cookies.remove('token')
+            Cookies.delete('token')
             window.location.reload()
         } else {
         return res.json()
@@ -78,9 +60,9 @@ export const getCourseInfo = (token, courseId) => {
         }
     })
     .then(res => {
-        if (res.status == 401) {
+        if (res.status >= 400 && res.status < 500) {
             alert('Session Expired, please Refresh the page')
-            Cookies.remove('token')
+            Cookies.delete('token')
             window.location.reload()
         } else {
         return res.json()
@@ -95,7 +77,7 @@ export const runLogs = (token, courseId, sendToStudents) => {
         'sendToStudents': sendToStudents,
     };
     
-    return fetch(API + 'candroid/runlogs',
+    return fetch(API + 'candroid/update',
     {
         method : 'POST',
         headers: {
@@ -105,10 +87,10 @@ export const runLogs = (token, courseId, sendToStudents) => {
         body : JSON.stringify(formBody)
     })
     .then(res => {
-        if (res.status == 401) {
+        if (res.status >= 400 && res.status < 500) {
             alert('Session Expired, please Refresh the page')
-            Cookies.remove('token')
-            window.location.assign('https://montclair.test.instructure.com/courses/'+ courseId +'/external_tools/6816')
+            Cookies.delete('token')
+            window.location.reload()
         } else {
         return res.json()
         }

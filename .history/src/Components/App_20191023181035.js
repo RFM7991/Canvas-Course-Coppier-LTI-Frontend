@@ -21,7 +21,7 @@ class App extends React.Component {
       // if no cookie present, redirect to server login
       if (this.state.token == undefined) {
       console.log('NO COOKIE')
-      window.location.assign(LOGIN)
+      window.location.assign('https://montclair.test.instructure.com/courses/114737/external_tools/6816')
     } 
   }
 

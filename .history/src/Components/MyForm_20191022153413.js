@@ -40,8 +40,7 @@ class MyForm extends React.Component {
       if (this.state.actionTaken) {
         // post update to candroid
         let response  = await updateCourse(this.props.token, this.props.userInfo.courseId, this.state.checked, Number(this.state.teacher_threshold), Number(this.state.student_threshold))
-        if (response != undefined)
-          alert(JSON.stringify(response))
+        alert(JSON.stringify(response))
         this.setState({ actionTaken: false })
       } 
     }
