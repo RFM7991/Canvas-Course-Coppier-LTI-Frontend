@@ -4,7 +4,7 @@ import AdminPanel from './AdminPanel.js';
 import Cookies from 'js-cookie';
 import { LOGIN } from '../Constants'
 import { Redirect } from 'react-router'
-import { BrowserRouter as Router, Switch, Route, Link, withRouter } from 'react-router-dom';
+import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
 import { launchLTI } from '../Requests/CandroidRequests' 
 
 class App extends React.Component {
@@ -21,9 +21,7 @@ class App extends React.Component {
       // if no cookie present, redirect to server login
       if (this.state.token == undefined) {
       console.log('NO COOKIE')
-      console.log(this.props)
- //     this.props.history.push(LOGIN)
-      window.location.assign(LOGIN) // note this is only for context outside of canvas
+  //    window.location.assign(LOGIN) // note this is only for context outside of canvas
     } 
   }
 
@@ -51,4 +49,4 @@ class App extends React.Component {
     }
 }
 
-export default withRouter(App);
+export default App;

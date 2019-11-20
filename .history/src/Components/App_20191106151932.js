@@ -19,11 +19,11 @@ class App extends React.Component {
 
   async componentDidMount() {
       // if no cookie present, redirect to server login
+      console.log(this.props)
       if (this.state.token == undefined) {
       console.log('NO COOKIE')
-      console.log(this.props)
- //     this.props.history.push(LOGIN)
-      window.location.assign(LOGIN) // note this is only for context outside of canvas
+      this.props.history.push(LOGIN)
+  //    window.location.assign(LOGIN) // note this is only for context outside of canvas
     } 
   }
 

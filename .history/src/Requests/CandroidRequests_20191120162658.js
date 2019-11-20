@@ -108,7 +108,7 @@ export const runLogs = (token, courseId, sendToStudents) => {
         if (res.status == 401) {
             alert('Session Expired, please Refresh the page')
             Cookies.remove('token')
-            window.location.assign('https://montclair.instructure.com/courses/'+ courseId +'/external_tools/6838')
+            window.location.assign('https://montclair.test.instructure.com/courses/'+ courseId +'/external_tools/6838')
         } else {
         return res.json()
         }

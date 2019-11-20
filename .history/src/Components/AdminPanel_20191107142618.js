@@ -23,7 +23,7 @@ class AdminPanel extends React.Component {
   handleRunLogs = async () => {
     let response = await runLogs(this.props.token, this.state.userInfo.courseId, false)
     if (response != undefined)
-      alert('Running log report, please check your Inbox.')
+      alert(JSON.stringify(response))
   }
 
   render() {
@@ -31,11 +31,11 @@ class AdminPanel extends React.Component {
         <header className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
           <p>
-             Candroid <code>Beta</code>
+             Candroid
              <br></br>
              Student Activity Logger
              <br></br>
-             Admin Panel
+             <code>Admin Panel</code>
           </p>
         </header>
       );

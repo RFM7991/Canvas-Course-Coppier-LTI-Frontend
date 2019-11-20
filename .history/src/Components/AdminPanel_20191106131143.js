@@ -23,7 +23,7 @@ class AdminPanel extends React.Component {
   handleRunLogs = async () => {
     let response = await runLogs(this.props.token, this.state.userInfo.courseId, false)
     if (response != undefined)
-      alert('Running log report, please check your Inbox.')
+      alert(JSON.stringify(response))
   }
 
   render() {
@@ -31,15 +31,15 @@ class AdminPanel extends React.Component {
         <header className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
           <p>
-             Candroid <code>Beta</code>
+             Candroid
              <br></br>
              Student Activity Logger
              <br></br>
-             Admin Panel
+             <code>Admin Panel</code>
           </p>
         </header>
       );
-      if (this.state.userInfo !== undefined && this.state.courseInfo !== undefined) {
+      if (this.state.userInfo !== undefined && this.state.courseInfo !== undefined)
         var menu = <div>
           <br></br>
           <Button  variant="secondary"
@@ -54,10 +54,9 @@ class AdminPanel extends React.Component {
             </h1>
             <MyForm userInfo={this.state.userInfo} courseInfo={this.state.courseInfo} token={this.props.token}></MyForm>
             </div>
-    }
       else var menu = <div>
-        <h3 style={{color: 'whitesmoke'}}>Sorry, this course does not appear in the Candroid database.</h3>
-        <p style={{color: 'whitesmoke'}}>Please Contact the IT Service Desk to enable candroid for your course.</p>
+        <h3 style={{color: 'white'}}>Sorry, this course is not registered for Candroid.</h3>
+        <p>Please Contact the IT Help Desk to enable candroid for your course.</p>
       </div>
     return (
       <div className="App-container">

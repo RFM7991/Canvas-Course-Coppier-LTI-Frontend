@@ -31,11 +31,11 @@ class AdminPanel extends React.Component {
         <header className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
           <p>
-             Candroid <code>Beta</code>
+             Candroid Beta
              <br></br>
              Student Activity Logger
              <br></br>
-             Admin Panel
+             <code>Admin Panel</code>
           </p>
         </header>
       );
