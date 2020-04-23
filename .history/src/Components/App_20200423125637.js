@@ -28,11 +28,11 @@ class App extends React.Component {
             redirect: 'follow',
             credentials: 'include', // Don't forget to specify this if you need cookies
             headers: headers,
+            body: JSON.stringify({
+                first_name: 'John',
+                last_name: 'Doe'
+            })
           })
-          .then(res => res.json())
-          .catch(err => err)
-
-          console.log("RES", res)
 
   //    window.location.assign(LOGIN) // note this is only for context outside of canvas
     } 
