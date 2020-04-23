@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "7c7dd88cfe023cca864c91ccc0fd833e",
+    "revision": "fcdc972841a1de188088de523e07f579",
     "url": "/Canvas-Course-Coppier-LTI-Frontend/index.html"
   },
   {
@@ -8,7 +8,7 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/Canvas-Course-Coppier-LTI-Frontend/static/css/2.86aa6515.chunk.css"
   },
   {
-    "revision": "31e9971d02fb2aa0fbbd",
+    "revision": "16c5d289762114ba5e7b",
     "url": "/Canvas-Course-Coppier-LTI-Frontend/static/css/main.f1dae679.chunk.css"
   },
   {
@@ -16,8 +16,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/Canvas-Course-Coppier-LTI-Frontend/static/js/2.0dd2f42e.chunk.js"
   },
   {
-    "revision": "31e9971d02fb2aa0fbbd",
-    "url": "/Canvas-Course-Coppier-LTI-Frontend/static/js/main.89fd9db0.chunk.js"
+    "revision": "16c5d289762114ba5e7b",
+    "url": "/Canvas-Course-Coppier-LTI-Frontend/static/js/main.a003364e.chunk.js"
   },
   {
     "revision": "821c037a0247e8e32387",
