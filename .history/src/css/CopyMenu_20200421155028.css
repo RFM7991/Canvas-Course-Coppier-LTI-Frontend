@@ -1,0 +1,28 @@
+
+.menuParentContainer {
+    width : 100%;
+    height: 100%;
+    display: flex;
+    justify-content: space-around;
+    flex-direction: column;
+    background-color: green;
+}
+
+.buttonContainer {
+    background-color: red;
+    border-width: 1px;
+    border-color: black;
+    display : flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.buttonRow {
+    width: 50%;
+    display: flex;
+    background-color: cyan;
+    margin: auto;
+    justify-content: space-around
+}
+

@@ -1,0 +1,9 @@
+
+.buttonContainer {
+    width: 50%;
+    background-color: red;
+    display : flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
