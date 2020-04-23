@@ -16,7 +16,7 @@ class App extends React.Component {
 
   async componentDidMount() {
       // if no cookie present, redirect to server login
-      console.log("token", this.state.token, 'cookies', Cookies.get())
+      console.log("token", this.state.token)
       if (this.state.token == undefined) {
         window.location.assign(LOGIN) // note this is only for context outside of canvas
       } 
