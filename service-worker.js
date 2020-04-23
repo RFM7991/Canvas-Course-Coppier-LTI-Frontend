@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/Canvas-Course-Coppier-LTI-Frontend/precache-manifest.aec8ee8f4eb465061073162531c4baef.js"
+  "/Canvas-Course-Coppier-LTI-Frontend/precache-manifest.6a557a0187162861d1932ff9b89d7234.js"
 );
 
 self.addEventListener('message', (event) => {
