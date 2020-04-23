@@ -18,7 +18,17 @@ class App extends React.Component {
       // if no cookie present, redirect to server login
       console.log("token", this.state.token)
       if (this.state.token == undefined) {
-      window.location.assign(LOGIN) // note this is only for context outside of canvas
+
+        let res = await fetch(LOGIN, {
+            method: 'GET',
+            redirect: 'follow',
+          })
+          .then(res => res.json())
+          .catch(err => err)
+
+          console.log("RES", res)
+
+  //    window.location.assign(LOGIN) // note this is only for context outside of canvas
     } 
   }
 
