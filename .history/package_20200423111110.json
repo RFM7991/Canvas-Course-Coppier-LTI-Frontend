@@ -24,6 +24,7 @@
     "react-tooltip": "^3.11.1"
   },
   "scripts": {
+    
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build",
     "start": "react-scripts start",

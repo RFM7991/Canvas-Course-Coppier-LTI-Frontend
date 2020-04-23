@@ -1,5 +1,5 @@
 {
-  "homepage": "https://rfm7991.ghithub.io/Canvas-Course-Coppier-LTI-Frontend",
+  "homepage": "http://rfm7991.ghithub.io/Canvas-Course-Coppier-LTI-Frontend",
   "name": "rob-lti",
   "version": "0.1.0",
   "private": true,
@@ -24,6 +24,7 @@
     "react-tooltip": "^3.11.1"
   },
   "scripts": {
+    
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build",
     "start": "react-scripts start",
