@@ -21,8 +21,7 @@ class App extends React.Component {
       console.log('res', res)
 
       if (this.state.token == undefined) {
-        window.location.assign(res.redirect)
- //       window.location.assign(LOGIN) // note this is only for context outside of canvas
+     //   window.location.assign(LOGIN) // note this is only for context outside of canvas
       } 
   }
 

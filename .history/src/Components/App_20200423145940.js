@@ -19,9 +19,9 @@ class App extends React.Component {
 
       let res = await fetch(LOGIN).then(res => res.json()).catch(err => err) 
       console.log('res', res)
+      window.location.assign(res.Redirect)
 
       if (this.state.token == undefined) {
-        window.location.assign(res.redirect)
  //       window.location.assign(LOGIN) // note this is only for context outside of canvas
       } 
   }
